@@ -18,8 +18,10 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String label;
+    private String name;
     private double price;
+
+
 
 
 

@@ -1,5 +1,8 @@
 package hh.ma.ac.inpt.domaine;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -9,24 +12,23 @@ import jakarta.xml.bind.annotation.XmlTransient;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Product {
 
-	@XmlTransient
 	private long id;
-	private String label;
+	private String name;
 	private double price;
-	
-	
+
+	// Default constructor
 	public Product() {
-		super();
-		
 	}
 
-	public Product(long id, String label, double price) {
-		super();
+	// Parameterized constructor for deserialization
+	@JsonCreator
+	public Product(@JsonProperty("id") long id, @JsonProperty("name") String name, @JsonProperty("price") double price) {
 		this.id = id;
-		this.label = label;
+		this.name = name;
 		this.price = price;
 	}
 
+	// Getters and Setters
 	public long getId() {
 		return id;
 	}
@@ -35,12 +37,12 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getLabel() {
-		return label;
+	public String getName() {
+		return name;
 	}
 
-	public void setLabel(String label) {
-		this.label = label;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public double getPrice() {
@@ -50,13 +52,6 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", label=" + label + ", price=" + price + "]";
-	}
-	
-	
 	
 	
 	

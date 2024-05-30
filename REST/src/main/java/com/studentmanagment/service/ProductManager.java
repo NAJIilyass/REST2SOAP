@@ -9,5 +9,8 @@ public interface ProductManager  {
 
     public Product getProduct(long id) throws NoSuchProductException;
 
+    public void updateProduct(long id,Product product) throws NoSuchProductException;
+
+    public void deleteProduct(long id) throws NoSuchProductException;
 
 }

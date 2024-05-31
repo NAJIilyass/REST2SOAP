@@ -1,8 +1,7 @@
-package com.studentmanagment.service;
+package com.productmanagement.service;
 
-import com.studentmanagment.exception.NoSuchProductException;
-import com.studentmanagment.model.Product;
-import com.studentmanagment.service.ProductManager;
+import com.productmanagement.exception.NoSuchProductException;
+import com.productmanagement.model.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -63,5 +62,16 @@ public class ProductServiceImpl implements ProductManager {
         if (!found) {
             throw new NoSuchProductException("No Such Product");
         }
+    }
+
+    @Override
+    public List<Product> getProductsByTag(String tag) throws NoSuchProductException {
+        List<Product> filteredProducts = new ArrayList<>();
+        for (Product product : products) {
+            if (product.getTags().contains(tag)) {
+                filteredProducts.add(product);
+            }
+        }
+        return filteredProducts;
     }
 }

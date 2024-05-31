@@ -1,10 +1,12 @@
-package com.studentmanagment.controller;
+package com.productmanagement.controller;
 
-import com.studentmanagment.service.ProductManager;
-import com.studentmanagment.exception.NoSuchProductException;
-import com.studentmanagment.model.Product;
+import com.productmanagement.service.ProductManager;
+import com.productmanagement.exception.NoSuchProductException;
+import com.productmanagement.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -31,5 +33,10 @@ public class ProductController {
     @PutMapping("/{id}")
     public void updateProduct(@PathVariable long id, @RequestBody Product product) throws NoSuchProductException {
         productService.updateProduct(id,product);
+    }
+
+    @GetMapping("tags/{tag}")
+    public List<Product> getProductsByTag(@PathVariable String tag) throws NoSuchProductException {
+        return productService.getProductsByTag(tag);
     }
 }

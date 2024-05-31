@@ -1,4 +1,4 @@
-package com.studentmanagment.exception;
+package com.productmanagement.exception;
 
 
 public class NoSuchProductException extends Exception{

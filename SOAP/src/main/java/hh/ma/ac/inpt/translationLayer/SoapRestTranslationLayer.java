@@ -6,6 +6,9 @@ import hh.ma.ac.inpt.exceptions.RequestException;
 import hh.ma.ac.inpt.service.ProductManager;
 import jakarta.jws.WebService;
 
+import java.util.ArrayList;
+
+
 @WebService(endpointInterface = "hh.ma.ac.inpt.service.ProductManager")
 public class SoapRestTranslationLayer implements ProductManager {
 
@@ -25,6 +28,11 @@ public class SoapRestTranslationLayer implements ProductManager {
     @Override
     public boolean updateProduct(long id, Product product) throws NoSuchProductException {
         return SoapRestUtility.sendPutRequest(REST_ENDPOINT_URL + "/" + id, product, Product.class);
+    }
+
+    @Override
+    public ArrayList<Product> getProductsByTag(String tag) throws NoSuchProductException {
+        return SoapRestUtility.sendGetRequest(REST_ENDPOINT_URL + "/tags/" + tag, ArrayList.class);
     }
 
 }

@@ -35,7 +35,7 @@ public class ProductController {
         productService.updateProduct(id,product);
     }
 
-    @GetMapping("/{tag}")
+    @GetMapping("tags/{tag}")
     public List<Product> getProductsByTag(@PathVariable String tag) throws NoSuchProductException {
         return productService.getProductsByTag(tag);
     }

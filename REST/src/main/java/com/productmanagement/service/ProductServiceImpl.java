@@ -72,9 +72,6 @@ public class ProductServiceImpl implements ProductManager {
                 filteredProducts.add(product);
             }
         }
-        if (filteredProducts.isEmpty()) {
-            throw new NoSuchProductException("No products found with tag: " + tag);
-        }
         return filteredProducts;
     }
 }
